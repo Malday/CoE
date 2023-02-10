@@ -25,6 +25,7 @@ modules:
         - "*node_modules*"
         - package-lock.json
     parameters:
+      database_id: "31315235-8ed3-4f01-a63c-b41a0690eaea"
       buildpack: nodejs_buildpack
       memory: 256M
       disk-quota: 1024M
