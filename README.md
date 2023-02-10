@@ -1,2 +1,2 @@
-# CoE
-Repository for CoE Event
+# CoE - DevApp
+> Business Application

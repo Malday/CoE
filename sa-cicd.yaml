@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: CoE-cicd
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: CoE-cicd
+rules:
+  - apiGroups:
+      - ""
+      - extensions
+      - batch
+      - apps
+      - gateway.kyma-project.io
+      - servicecatalog.k8s.io
+    resources:
+      - deployments
+      - replicasets
+      - pods
+      - jobs
+      - configmaps
+      - apirules
+      - serviceinstances
+      - servicebindings
+      - services
+      - secrets
+    verbs:
+      - create
+      - update
+      - patch
+      - delete
+      - get
+      - list
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: CoE-cicd-binding
+subjects:
+  - kind: ServiceAccount
+    name: CoE-cicd
+roleRef:
+  kind: Role
+  name: CoE-cicd
+  apiGroup: rbac.authorization.k8s.io
